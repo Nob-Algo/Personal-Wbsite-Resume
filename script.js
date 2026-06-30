@@ -150,61 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       CONTACT FORM VALIDATION & MOCK SUBMISSION
+       CONTACT FORM VALIDATION & MOCK SUBMISSION (Removed)
        ========================================================================== */
-    const contactForm = document.getElementById('contact-form');
-    const toast = document.getElementById('toast');
-
-    const showToast = (message, isError = false) => {
-        toast.textContent = message;
-        toast.style.backgroundColor = isError ? '#e63946' : 'var(--text-primary)';
-        toast.style.color = isError ? '#ffffff' : 'var(--bg-primary)';
-        
-        toast.classList.add('show');
-        
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 4000);
-    };
-
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('subject').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        // Simple Validation Checks
-        if (!name || !email || !subject || !message) {
-            showToast('Please fill out all fields.', true);
-            return;
-        }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showToast('Please enter a valid email address.', true);
-            return;
-        }
-
-        // Mock Submission visual state feedback
-        const submitBtn = contactForm.querySelector('.btn-submit');
-        const submitBtnText = submitBtn.querySelector('span');
-        const originalText = submitBtnText.textContent;
-        
-        submitBtn.disabled = true;
-        submitBtnText.textContent = 'Sending...';
-
-        // Simulate network latency (1.5s)
-        setTimeout(() => {
-            showToast(`Thank you, ${name}! Your message has been sent successfully.`);
-            contactForm.reset();
-            
-            // Restore button
-            submitBtn.disabled = false;
-            submitBtnText.textContent = originalText;
-        }, 1500);
-    });
 
     /* ==========================================================================
        DYNAMIC YEAR SETTER
